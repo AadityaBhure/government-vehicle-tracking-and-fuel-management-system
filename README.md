@@ -6,7 +6,7 @@ It features **real-time vehicle location tracking**, **fuel monitoring**, **geof
 ---
 
 ## 🌍 **Live Demo**
-🔗 [Visit GVTFMS on Vercel]([https://your-vercel-project-url.vercel.app](https://government-vehicle-tracking-and-fue.vercel.app/login.html))
+🔗 [Visit GVTFMS on Vercel]([https://your-vercel-project-url.vercel.app](https://government-vehicle-tracking-and-fue.vercel.app/login.html)
 
 ---
 
