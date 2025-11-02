@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GVTFMS | Vehicle Management</title>
+  <link rel="stylesheet" href="../assets/css/dashboard.css" />
+</head>
+<body>
+  <div class="layout">
+    <!-- ===== Sidebar ===== -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <img src="../assets/images/logo.png" alt="Logo" class="logo" />
+        <h2>GVTFMS</h2>
+      </div>
+
+      <nav class="nav-links">
+        <a href="dashboard.html">🏠 Dashboard</a>
+        <a href="live-map.html">🗺️ Live Map</a>
+        <a href="vehicle-data.html" class="active">🚗 Vehicle Data</a>
+        <a href="fuel-data.html">⛽ Fuel Data</a>
+        <a href="settings.html">⚙️ Settings</a>
+      </nav>
+    </aside>
+
+    <!-- ===== Main Content ===== -->
+    <main class="main-content">
+      <div class="topbar">
+        <h1>Vehicle Management (Admin)</h1>
+        <button id="logoutBtn">Logout</button>
+      </div>
+
+      <section class="content">
+        <!-- Add Vehicle Form -->
+        <div class="vehicle-form">
+          <h2>Add New Vehicle</h2>
+
+          <input type="text" id="vehName" placeholder="Vehicle Name" required />
+
+          <input
+            type="text"
+            id="vehNumber"
+            placeholder="Registration Number (e.g. AB12CD1234)"
+            maxlength="10"
+            pattern="[A-Za-z]{2}[0-9]{2}[A-Za-z]{2}[0-9]{4}"
+            required
+          />
+
+          <select id="vehType" required>
+            <option value="" disabled selected>Select Vehicle Type</option>
+            <option value="Car">Car</option>
+            <option value="Truck">Truck</option>
+            <option value="Bus">Bus</option>
+            <option value="Jeep">Jeep</option>
+            <option value="JCB">JCB</option>
+            <option value="Ambulance">Ambulance</option>
+            <option value="Police Van">Police Van</option>
+            <option value="Bike">Bike</option>
+            <option value="Other">Other</option>
+          </select>
+
+          <button id="addVehicleBtn">Add Vehicle</button>
+        </div>
+
+        <!-- Vehicle List -->
+        <div class="vehicle-list">
+          <h2>All Vehicles</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Registration</th>
+                <th>Type</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="vehicleTableBody">
+              <!-- Dynamic rows here -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- ✅ IMPORTANT: Must be type="module" -->
+  <script type="module" src="../assets/js/vehicle.js"></script>
+  <script type="module" src="../assets/js/auth.js"></script>
+</body>
+</html>

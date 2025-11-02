@@ -1,0 +1,218 @@
+/* ===== Global Layout ===== */
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  background-color: #f5f7fa;
+  color: #333;
+  height: 100vh;
+  display: flex;
+}
+
+.layout {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+/* ===== Sidebar ===== */
+.sidebar {
+  width: 240px;
+  background: linear-gradient(180deg, #001f3f, #003366);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 25px;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+
+.sidebar-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.sidebar-header .logo {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 10px;
+}
+
+.sidebar-header h2 {
+  font-size: 20px;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  padding: 0 15px;
+}
+
+.nav-links a {
+  color: #ddd;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  display: block;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+/* ===== Main Content ===== */
+.main-content {
+  margin-left: 240px; /* Prevents overlap with sidebar */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  height: 100vh;
+}
+
+/* ===== Topbar ===== */
+.topbar {
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 25px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.topbar h1 {
+  font-size: 22px;
+  color: #003366;
+}
+
+.topbar button {
+  padding: 8px 14px;
+  border: none;
+  background-color: #0074d9;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.topbar button:hover {
+  background-color: #005fa3;
+}
+
+/* ===== Dashboard Cards ===== */
+.content {
+  padding: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+  color: #003366;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 18px;
+  font-weight: bold;
+  color: #0074d9;
+}
+
+/* ===== Vehicle Form & Table (shared for vehicle-data page) ===== */
+.vehicle-form,
+.vehicle-list {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+  margin-bottom: 25px;
+}
+
+.vehicle-form h2,
+.vehicle-list h2 {
+  margin-bottom: 15px;
+  color: #003366;
+}
+
+.vehicle-form input,
+.vehicle-form select {
+  padding: 10px;
+  margin: 8px;
+  width: calc(50% - 20px);
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+}
+
+.vehicle-form input:focus,
+.vehicle-form select:focus {
+  border-color: #0074d9;
+  outline: none;
+}
+
+.vehicle-form button {
+  padding: 10px 16px;
+  background-color: #0074d9;
+  border: none;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.vehicle-form button:hover {
+  background-color: #005fa3;
+}
+
+.vehicle-list table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.vehicle-list th,
+.vehicle-list td {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+}
+
+.remove-btn {
+  background: #ff4d4d;
+  border: none;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.remove-btn:hover {
+  background: #d93636;
+}
