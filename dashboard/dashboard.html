@@ -19,7 +19,7 @@
         <a href="dashboard.html" class="active">🏠 Dashboard</a>
         <a href="live-map.html">🗺️ Live Map</a>
         <a href="vehicle-data.html">🚗 Vehicle Data</a>
-        <a href="https://v0-government-fuel-monitoring-app.vercel.app/">⛽ Fuel Data</a>
+        <a href="https://v0-government-fuel-monitoring-app.vercel.app/" target="_self">⛽ Fuel Data</a>
         <a href="settings.html">⚙️ Settings</a>
       </nav>
     </aside>
@@ -80,5 +80,13 @@
       }
     });
   </script>
+  <script>
+  document.querySelector('a[href="https://v0-government-fuel-monitoring-app.vercel.app/"]')
+    .addEventListener('click', function (event) {
+      event.preventDefault();
+      window.location.href = this.href;
+    });
+</script>
+
 </body>
 </html>
