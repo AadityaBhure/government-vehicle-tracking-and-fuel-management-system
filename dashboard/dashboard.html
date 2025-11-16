@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GVTFMS - Dashboard</title>
+  <link rel="stylesheet" href="../assets/css/dashboard.css" />
+</head>
+<body>
+  <div class="layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <img src="../assets/images/logo.png" alt="Logo" class="logo" />
+        <h2>GVTFMS</h2>
+      </div>
+
+     <nav class="nav-links">
+      <a href="/dashboard/dashboard.html">🏠 Dashboard</a>
+      <a href="/dashboard/live-map.html">🗺️ Live Map</a>
+      <a href="/dashboard/vehicle-data.html">🚗 Vehicle Data</a>
+      <a href="/dashboard/fuel-data.html">⛽ Fuel Data</a>
+      <a href="/dashboard/settings.html">⚙️ Settings</a>
+    </nav>
+
+
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="topbar">
+        <h1>Dashboard Overview</h1>
+        <button id="logoutBtn">Logout</button>
+      </header>
+
+      <section class="content">
+        <div class="card" id="vehicleCard">
+          <h3>Total Vehicles</h3>
+          <p id="vehicleCount">Loading...</p>
+        </div>
+        <div class="card">
+          <h3>Fuel Usage</h3>
+          <p id="fuelUsage">134 Litres</p>
+        </div>
+        <div class="card">
+          <h3>Alerts</h3>
+          <p id="alertsCount">1</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Core Scripts -->
+  <script type="module" src="../assets/js/dashboard.js"></script>
+  <script type="module" src="../assets/js/auth.js"></script>
+
+  <!-- ✅ Admin-only Vehicle Data Generator -->
+  <script type="module">
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+    import { app } from "../assets/js/firebase-config.js";
+
+    const auth = getAuth(app);
+    console.log("🧩 Auth listener initialized...");
+
+    onAuthStateChanged(auth, async (user) => {
+      console.log("👤 Auth state changed:", user?.email);
+
+      if (user && user.email === "aadityabhure001@gmail.com") {
+        console.log("✅ Admin logged in → starting data generator...");
+
+        try {
+          await import("../assets/js/data-generator.js");
+          console.log("📦 Data generator script loaded successfully!");
+        } catch (err) {
+          console.error("❌ Failed to load data-generator.js:", err);
+        }
+      } else if (user) {
+        console.log("👥 Regular user logged in → read-only mode.");
+      } else {
+        console.warn("⚠️ No user logged in → redirecting to login...");
+        window.location.href = "../login.html";
+      }
+    });
+  </script>
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const fuelDataLink = document.getElementById("fuelDataLink");
+    if (fuelDataLink) {
+      fuelDataLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        console.log("Redirecting to Fuel Data module...");
+        window.location.assign("https://v0-government-fuel-monitoring-app.vercel.app/");
+      });
+    } else {
+      console.error("Fuel Data link not found.");
+    }
+  });
+</script>
+
+
+</body>
+</html>

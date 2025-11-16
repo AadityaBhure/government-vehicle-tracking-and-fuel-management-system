@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GVTFMS - Fuel Data</title>
+
+  <!-- Dashboard CSS -->
+  <link rel="stylesheet" href="/assets/css/dashboard.css" />
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+  <div class="layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <img src="/assets/images/logo.png" alt="Logo" class="logo" />
+        <h2>GVTFMS</h2>
+      </div>
+
+     <nav class="nav-links">
+      <a href="/dashboard/dashboard.html">🏠 Dashboard</a>
+      <a href="/dashboard/live-map.html">🗺️ Live Map</a>
+      <a href="/dashboard/vehicle-data.html">🚗 Vehicle Data</a>
+      <a href="/dashboard/fuel-data.html">⛽ Fuel Data</a>
+      <a href="/dashboard/settings.html">⚙️ Settings</a>
+    </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+      <!-- TOPBAR -->
+      <header class="topbar">
+        <h1>Fuel Analytics</h1>
+        <button id="logoutBtn">Logout</button>
+      </header>
+
+      <!-- CONTENT -->
+      <section class="content" style="display:block; width:100%;">
+
+        <!-- All Vehicles Overview -->
+        <div class="card" style="grid-column: 1 / -1;">
+          <h2>All Vehicles Overview</h2>
+
+          <p id="nodata" style="display:none; color:gray;">
+            No fuel data available yet...
+          </p>
+
+          <table id="fuel-table" style="margin-top:15px;">
+            <thead>
+              <tr>
+                <th>Vehicle</th>
+                <th>Fuel (%)</th>
+                <th>Distance (km)</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+
+          <canvas id="overviewChart" height="120" style="margin-top:20px;"></canvas>
+        </div>
+
+        <!-- Individual Vehicle Section -->
+        <div class="card" style="grid-column: 1 / -1;">
+          <h2>Individual Vehicle</h2>
+
+          <select id="vehicleSelect" style="padding:8px; margin-bottom:15px;">
+            <option value="">Select Vehicle</option>
+          </select>
+
+          <div id="vehicleInfo" style="display:none;">
+            <p><b>ID:</b> <span id="vId"></span></p>
+            <p><b>Fuel:</b> <span id="vFuel"></span>%</p>
+            <p><b>Distance:</b> <span id="vDist"></span> km</p>
+
+            <canvas id="vehicleChart" height="150"></canvas>
+          </div>
+        </div>
+
+      </section>
+    </main>
+  </div>
+
+  <!-- Firebase + Fuel Scripts -->
+  <script type="module" src="/assets/js/firebase-config.js"></script>
+  <script type="module" src="/assets/js/fuel.js"></script>
+
+</body>
+</html>

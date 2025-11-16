@@ -1,0 +1,125 @@
+/* ===== Global Reset ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ===== Background ===== */
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #001f3f, #004080, #0074d9);
+  background-size: 200% 200%;
+  animation: gradientMove 10s ease infinite;
+}
+
+/* Smooth gradient animation */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ===== Container ===== */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* ===== Box ===== */
+.login-box {
+  background-color: rgba(255, 255, 255, 0.12);
+  padding: 40px 35px;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  width: 350px;
+  text-align: center;
+  color: #fff;
+}
+
+/* ===== Heading ===== */
+.login-box h2 {
+  font-size: 24px;
+  margin-bottom: 25px;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+/* ===== Form Inputs ===== */
+form input {
+  width: 100%;
+  padding: 12px 14px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 15px;
+  transition: all 0.3s ease;
+}
+
+form input::placeholder {
+  color: #ddd;
+}
+
+form input:focus {
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
+}
+
+/* ===== Button ===== */
+button {
+  width: 100%;
+  margin-top: 15px;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: #0074d9;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: #005fb8;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(0, 116, 217, 0.4);
+}
+
+/* ===== Bottom Text ===== */
+.login-box p {
+  margin-top: 18px;
+  font-size: 14px;
+  color: #ddd;
+}
+
+.login-box a {
+  color: #00bfff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.login-box a:hover {
+  text-decoration: underline;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 480px) {
+  .login-box {
+    width: 90%;
+    padding: 30px 25px;
+  }
+  .login-box h2 {
+    font-size: 20px;
+  }
+}

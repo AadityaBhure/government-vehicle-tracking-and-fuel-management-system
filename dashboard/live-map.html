@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GVTFMS | Live Map</title>
+
+  <link rel="stylesheet" href="../assets/css/dashboard.css" />
+
+  <!-- ✅ Latest Leaflet -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+</head>
+
+<body>
+  <div class="layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <img src="../assets/images/logo.png" alt="Logo" class="logo" />
+        <h2>GVTFMS</h2>
+      </div>
+     <nav class="nav-links">
+      <a href="/dashboard/dashboard.html">🏠 Dashboard</a>
+      <a href="/dashboard/live-map.html">🗺️ Live Map</a>
+      <a href="/dashboard/vehicle-data.html">🚗 Vehicle Data</a>
+      <a href="/dashboard/fuel-data.html">⛽ Fuel Data</a>
+      <a href="/dashboard/settings.html">⚙️ Settings</a>
+    </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="topbar">
+        <h1>Vehicle Live Map</h1>
+        <button id="logoutBtn">Logout</button>
+      </header>
+
+      <section class="content">
+        <div id="map" style="height: 80vh; width: 100%; border-radius: 10px;"></div>
+      </section>
+    </main>
+  </div>
+
+  <!-- ✅ Latest Leaflet JS -->
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
+
+  <!-- Firebase + Map JS -->
+  <script type="module" src="../assets/js/map.js"></script>
+  <script type="module" src="../assets/js/auth.js"></script>
+
+  <!-- Admin-only vehicle generator -->
+<script type="module">
+import { getAuth, onAuthStateChanged } 
+  from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+import { app } from "../assets/js/firebase-config.js";
+
+const auth = getAuth(app);
+
+onAuthStateChanged(auth, async (user) => {
+  if (user && user.email === "aadityabhure001@gmail.com") {
+    console.log("ADMIN: starting generator on live-map");
+    await import("../assets/js/data-generator.js");
+  }
+});
+</script>
+
+</body>
+</html>

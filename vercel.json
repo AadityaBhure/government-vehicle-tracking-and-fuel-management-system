@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "dashboard/**/*.html", "use": "@vercel/static" },
+    { "src": "*.html", "use": "@vercel/static" },
+    { "src": "assets/**/*", "use": "@vercel/static" }
+  ],
+  "routes": [
+    { "src": "^/$", "dest": "/login.html" },
+    { "src": "/dashboard/(.*)", "dest": "/dashboard/$1" },
+    { "src": "/assets/(.*)", "dest": "/assets/$1" },
+    { "src": "/(.*)", "dest": "/$1" }
+  ]
+}
